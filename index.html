@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IronLoader</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: radial-gradient(circle at top, #0f1c2e, #050b14);
+        color: #e6edf3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .container {
+        text-align: center;
+        background: rgba(20, 35, 60, 0.6);
+        padding: 50px 60px;
+        border-radius: 20px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.6);
+        backdrop-filter: blur(10px);
+        width: 420px;
+        position: relative;
+    }
+
+    .logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2b4c7e, #1b2e4b);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+    }
+
+    h1 {
+        margin: 10px 0 5px;
+        font-size: 32px;
+    }
+
+    h2 {
+        margin: 0 0 30px;
+        font-weight: 400;
+        font-size: 16px;
+        color: #9fb3c8;
+    }
+
+    .download-btn {
+        background: #2ecc71;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #072a16;
+        cursor: pointer;
+        transition: 0.2s;
+        font-weight: 600;
+    }
+
+    .download-btn:hover {
+        background: #27ae60;
+    }
+
+    .iframe-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.85);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 999;
+    }
+
+    .iframe-box {
+        width: 80%;
+        max-width: 800px;
+        background: #000;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 30px rgba(0,0,0,0.7);
+    }
+
+    video {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .message {
+        margin-top: 20px;
+        font-size: 14px;
+        color: #c9d4df;
+        text-align: center;
+        max-width: 600px;
+    }
+
+    .ps {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #7f9bb3;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="logo"><img src="logo.png" style="height: 70%;"></div>
+    <h1>IronLoader</h1>
+    <h2>Big crawler game mod manager!!!</h2>
+
+    <button class="download-btn" onclick="startDownload()">
+        Download IronLoader for <span id="os"></span>
+    </button>
+    <br>
+    - Ps. Supporting for Windows and experimental binaries for Linux and Mac
+    <br>
+    <br>
+    <button class="download-btn" onclick="startDownload()">
+        IronLoader Source Code
+    </button>
+    <br>
+    <br>
+    <button class="download-btn" onclick="startDownload()">
+        LibIronLoader / Game Code Documentation
+    </button>
+    <br>
+    Ps. Game Documentation is not fully finished, but should allow you to partially mod the game
+</div>
+
+<div class="iframe-overlay" id="overlay">
+    <div class="iframe-box">
+        <video src="rickroll.mp4" autoplay controls></video>
+    </div>
+
+    <div class="message">
+        Ironloader is releasing next steamfest! Thank you for admiring my contributions to the community
+        <div class="ps">
+            Ps. IronLoader is amazing, I am using right now and its working so well 😉
+            <br>
+            PsPs. Please! Do not tell the community about this yet! Say that it's working in #modding_community so more operators falls for it xDxD
+        </div>
+    </div>
+</div>
+
+<script>
+    function detectOS() {
+        const userAgent = navigator.userAgent;
+
+        if (userAgent.indexOf("Win") !== -1) return "Windows";
+        if (userAgent.indexOf("Mac") !== -1) return "macOS";
+        if (userAgent.indexOf("Linux") !== -1) return "Linux";
+        return "your OS";
+    }
+
+    document.getElementById("os").textContent = detectOS();
+
+    function startDownload() {
+        document.getElementById("overlay").style.display = "flex";
+    }
+</script>
+
+</body>
+</html>
